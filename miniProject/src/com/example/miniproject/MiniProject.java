@@ -17,4 +17,5 @@ public class MiniProject extends Activity {
         getMenuInflater().inflate(R.menu.activity_mini_project, menu);
         return true;
     }
+    
 }
