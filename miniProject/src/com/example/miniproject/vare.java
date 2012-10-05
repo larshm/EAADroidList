@@ -1,3 +1,5 @@
+package com.example.miniproject;
+
 public class vare {
 	private String navn;
 	private int mængde;
