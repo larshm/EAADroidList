@@ -1,5 +1,5 @@
 package com.example.miniproject;
 
-public enum mængdeenhed {
+public enum volumeUnit {
 	kilogram, liter, stk
 }

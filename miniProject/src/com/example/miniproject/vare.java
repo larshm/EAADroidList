@@ -2,51 +2,87 @@ package com.example.miniproject;
 
 public class vare {
 	private String navn;
-	private int mængde;
+	private int volume;
 	private double pris;
-	private mængdeenhed mængdeenhed;
+	private volumeUnit volumeUnit;
 
-	
-	public vare(){
-		
+	public vare() {
+
 	}
 
-	public vare(String navn, int mængde, double pris, mængdeenhed mængdeenhed) {
-		this.navn = navn;
-		this.mængde = mængde;
-		this.pris = pris;
-		this.mængdeenhed = mængdeenhed;
-	}
-
+	/**
+	 * @return the navn
+	 */
 	public synchronized final String getNavn() {
 		return navn;
 	}
 
+	/**
+	 * @param navn
+	 *            the navn to set
+	 */
 	public synchronized final void setNavn(String navn) {
 		this.navn = navn;
 	}
 
-	public synchronized final int getMængde() {
-		return mængde;
+	/**
+	 * @return the volume
+	 */
+	public synchronized final int getVolume() {
+		return volume;
 	}
 
-	public synchronized final void setMængde(int mængde) {
-		this.mængde = mængde;
+	/**
+	 * @param volume
+	 *            the volume to set
+	 */
+	public synchronized final void setVolume(int volume) {
+		this.volume = volume;
 	}
 
+	/**
+	 * @return the pris
+	 */
 	public synchronized final double getPris() {
 		return pris;
 	}
 
+	/**
+	 * @param pris
+	 *            the pris to set
+	 */
 	public synchronized final void setPris(double pris) {
 		this.pris = pris;
 	}
 
-	public synchronized final mængdeenhed getMængdeenhed() {
-		return mængdeenhed;
+	/**
+	 * @return the volumeUnit
+	 */
+	public synchronized final volumeUnit getVolumeUnit() {
+		return volumeUnit;
 	}
 
-	public synchronized final void setMængdeenhed(mængdeenhed mængdeenhed) {
-		this.mængdeenhed = mængdeenhed;
+	/**
+	 * @param volumeUnit
+	 *            the volumeUnit to set
+	 */
+	public synchronized final void setVolumeUnit(volumeUnit volumeUnit) {
+		this.volumeUnit = volumeUnit;
 	}
+
+	/**
+	 * 
+	 * @param navn
+	 * @param volume
+	 * @param pris
+	 * @param volumeUnit
+	 */
+	public vare(String navn, int volume, double pris,
+			com.example.miniproject.volumeUnit volumeUnit) {
+		this.navn = navn;
+		this.volume = volume;
+		this.pris = pris;
+		this.volumeUnit = volumeUnit;
+	}
+
 }
