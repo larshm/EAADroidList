@@ -23,12 +23,7 @@ public class VareListeFragment extends ListFragment {
 		
 		View v = super.onCreateView(inflater, container, savedInstanceState);
 		
-		List<String> arrTest = new ArrayList<String>();
-		arrTest.add("Test 1");
-		arrTest.add("Test 2");
-		arrTest.add("Test 3");		
-		
-		setListAdapter(new ArrayAdapter<String>(v.getContext(), android.R.layout.simple_list_item_1, arrTest));
+		setListAdapter(new ArrayAdapter<Vare>(v.getContext(), android.R.layout.simple_list_item_1, Service.getAllVarer(v.getContext())));
 		
 		return v;
 	}

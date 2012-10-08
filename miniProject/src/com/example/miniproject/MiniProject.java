@@ -3,6 +3,8 @@ package com.example.miniproject;
 import android.app.ActionBar;
 import android.app.ActionBar.Tab;
 import android.app.Activity;
+import android.content.ContentValues;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.Menu;
 
@@ -13,6 +15,29 @@ public class MiniProject extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mini_project);
         
+        //init db
+        DroidListDatabaseHelper dbh = new DroidListDatabaseHelper(getApplicationContext());
+        SQLiteDatabase db = dbh.getReadableDatabase();
+        
+        ContentValues cv = new ContentValues();
+        cv.put("navn", "PS3");
+        cv.put("volume", 10);
+        cv.put("pris", 2300);
+        cv.put("volumeUnit", 0);
+        
+        db.insert("Varer", "id", cv);
+        
+        cv = new ContentValues();
+        cv.put("navn", "Xbox 360");
+        cv.put("volume", 10);
+        cv.put("pris", 2500);
+        cv.put("volumeUnit", 1);
+        
+        db.insert("Varer", "id", cv);
+        
+        db.close();
+        
+        //init actionbar
         ActionBar ab = getActionBar();
         ab.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
         ab.setDisplayShowTitleEnabled(false);
@@ -22,8 +47,6 @@ public class MiniProject extends Activity {
         					.setTabListener(new DroidListTabListener<VareListeFragment>(this, "vareliste", VareListeFragment.class));
         
         ab.addTab(tabVareListe);
-        
-        
     }
 
     @Override
