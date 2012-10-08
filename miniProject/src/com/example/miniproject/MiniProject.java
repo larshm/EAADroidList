@@ -1,16 +1,16 @@
 package com.example.miniproject;
 
+import java.util.ArrayList;
+
 import android.app.ActionBar;
 import android.app.ActionBar.Tab;
 import android.app.Activity;
-import android.content.ContentValues;
-import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.Menu;
+import android.widget.ArrayAdapter;
 
 public class MiniProject extends Activity {
-
-    @Override
+	@Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mini_project);
@@ -48,6 +48,7 @@ public class MiniProject extends Activity {
         
         Tab tabShoppingListe = ab.newTab()
     							.setText(R.string.shoppingliste_tab)
+//    							.setTabListener(new DroidListTabListener<FragmentTest>(this, "shoppingliste", FragmentTest.class));
     							.setTabListener(new DroidListTabListener<ShoppingListeFragment>(this, "shoppingliste", ShoppingListeFragment.class));
         
         ab.addTab(tabShoppingListe);

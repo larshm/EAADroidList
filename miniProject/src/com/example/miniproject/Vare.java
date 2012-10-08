@@ -87,6 +87,6 @@ public class Vare {
 
 	@Override
 	public String toString() {
-		return navn;
+		return this.navn;
 	}
 }
