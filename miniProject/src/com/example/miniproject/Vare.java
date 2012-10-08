@@ -4,7 +4,7 @@ public class Vare {
 	private String navn;
 	private int volume;
 	private double pris;
-	private volumeUnit volumeUnit;
+	private VolumeUnit volumeUnit;
 
 	public Vare() {
 
@@ -58,7 +58,7 @@ public class Vare {
 	/**
 	 * @return the volumeUnit
 	 */
-	public synchronized final volumeUnit getVolumeUnit() {
+	public synchronized final VolumeUnit getVolumeUnit() {
 		return volumeUnit;
 	}
 
@@ -66,7 +66,7 @@ public class Vare {
 	 * @param volumeUnit
 	 *            the volumeUnit to set
 	 */
-	public synchronized final void setVolumeUnit(volumeUnit volumeUnit) {
+	public synchronized final void setVolumeUnit(VolumeUnit volumeUnit) {
 		this.volumeUnit = volumeUnit;
 	}
 
@@ -78,7 +78,7 @@ public class Vare {
 	 * @param volumeUnit
 	 */
 	public Vare(String navn, int volume, double pris,
-			com.example.miniproject.volumeUnit volumeUnit) {
+			com.example.miniproject.VolumeUnit volumeUnit) {
 		this.navn = navn;
 		this.volume = volume;
 		this.pris = pris;

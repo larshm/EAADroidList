@@ -16,26 +16,24 @@ public class MiniProject extends Activity {
         setContentView(R.layout.activity_mini_project);
         
         //init db
-        DroidListDatabaseHelper dbh = new DroidListDatabaseHelper(getApplicationContext());
-        SQLiteDatabase db = dbh.getReadableDatabase();
-        
-        ContentValues cv = new ContentValues();
-        cv.put("navn", "PS3");
-        cv.put("volume", 10);
-        cv.put("pris", 2300);
-        cv.put("volumeUnit", 0);
-        
-        db.insert("Varer", "id", cv);
-        
-        cv = new ContentValues();
-        cv.put("navn", "Xbox 360");
-        cv.put("volume", 10);
-        cv.put("pris", 2500);
-        cv.put("volumeUnit", 1);
-        
-        db.insert("Varer", "id", cv);
-        
-        db.close();
+//        DroidListDatabaseHelper dbh = new DroidListDatabaseHelper(getApplicationContext());
+//        SQLiteDatabase db = dbh.getReadableDatabase();
+//        
+//        ContentValues cv = new ContentValues();
+//        cv.put("navn", "PS3");
+//        cv.put("volume", 10);
+//        cv.put("pris", 2300);
+//        cv.put("volumeUnit", 0);
+//        
+//        db.insert("Varer", "id", cv);
+//        
+//        cv = new ContentValues();
+//        cv.put("navn", "Xbox 360");
+//        cv.put("volume", 10);
+//        cv.put("pris", 2500);
+//        cv.put("volumeUnit", 1);
+//        
+//        db.insert("Varer", "id", cv);
         
         //init actionbar
         ActionBar ab = getActionBar();
@@ -47,6 +45,12 @@ public class MiniProject extends Activity {
         					.setTabListener(new DroidListTabListener<VareListeFragment>(this, "vareliste", VareListeFragment.class));
         
         ab.addTab(tabVareListe);
+        
+        Tab tabShoppingListe = ab.newTab()
+    							.setText(R.string.shoppingliste_tab)
+    							.setTabListener(new DroidListTabListener<ShoppingListeFragment>(this, "shoppingliste", ShoppingListeFragment.class));
+        
+        ab.addTab(tabShoppingListe);
     }
 
     @Override
@@ -54,6 +58,4 @@ public class MiniProject extends Activity {
         getMenuInflater().inflate(R.menu.activity_mini_project, menu);
         return true;
     }
-    
-    
 }

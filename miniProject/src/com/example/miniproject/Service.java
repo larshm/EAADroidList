@@ -18,11 +18,9 @@ public class Service {
 			String navn = cur.getString(cur.getColumnIndex("navn"));
 			int volume = cur.getInt(cur.getColumnIndex("volume"));
 			double pris = cur.getDouble(cur.getColumnIndex("pris"));
-			volumeUnit vu = volumeUnit.values()[cur.getInt(cur.getColumnIndex("volumeUnit"))];
+			VolumeUnit vu = VolumeUnit.values()[cur.getInt(cur.getColumnIndex("volumeUnit"))];
 			varer.add(new Vare(navn, volume, pris, vu));
 		}
-		
-		db.close();
 		
 		return varer;
 	}
