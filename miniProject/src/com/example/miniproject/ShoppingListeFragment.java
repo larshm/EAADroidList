@@ -12,7 +12,7 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ListAdapter;
 import android.widget.ListView;
-import android.widget.Toast;
+import android.widget.TextView;
 
 public class ShoppingListeFragment extends ListFragment {
 	ArrayList<Vare> currShoppinglistVarer;
@@ -29,7 +29,8 @@ public class ShoppingListeFragment extends ListFragment {
 	
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-		return super.onCreateView(inflater, container, savedInstanceState);
+		return inflater.inflate(R.layout.shoppinglist_fragment, container, false);
+		//return super.onCreateView(inflater, container, savedInstanceState);
 	}
 	
 	@Override
@@ -39,6 +40,12 @@ public class ShoppingListeFragment extends ListFragment {
 		MiniProject mp = (MiniProject)getActivity();
 		
 		setListAdapter(new ArrayAdapter<Vare>(getListView().getContext(), android.R.layout.simple_list_item_1, mp.getCurrentShoppingList()));
+		
+		double sum = 0.0;
+		for(Vare v : mp.getCurrentShoppingList())
+			sum += v.getPris();
+		
+		((TextView)getView().findViewById(R.id.sum_text)).setText("Pris i alt: " + sum);
 		
 		mp = null;
 	}
