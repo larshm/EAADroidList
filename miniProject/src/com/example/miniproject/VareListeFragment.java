@@ -12,6 +12,8 @@ import android.widget.ListAdapter;
 import android.widget.ListView;
 
 public class VareListeFragment extends ListFragment {
+	OnVareSelectedListener mCallback;
+	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -39,14 +41,20 @@ public class VareListeFragment extends ListFragment {
 			ListAdapter la = getListAdapter();
 			Vare vare = (Vare)la.getItem(position);
 			
-			ShoppingListeFragment slf = (ShoppingListeFragment)getFragmentManager().findFragmentById(R.id.shoppingListe);
-			slf.addVareToShoppingListe(vare);
+			if(mCallback != null)
+				mCallback.onVareSelected(position, vare);
 		}				
 	}
 	
 	@Override
-	public void onPause() {
-		// TODO Auto-generated method stub
-		super.onPause();
+	public void onAttach(Activity activity) {
+		super.onAttach(activity);
+		
+		try {
+			mCallback = (OnVareSelectedListener)activity;
+		}
+		catch(ClassCastException cce) {
+			cce.printStackTrace();
+		}
 	}
 }

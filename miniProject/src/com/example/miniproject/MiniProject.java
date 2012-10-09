@@ -9,7 +9,9 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.widget.ArrayAdapter;
 
-public class MiniProject extends Activity {
+public class MiniProject extends Activity implements OnVareSelectedListener {
+	private ArrayList<Vare> currShoppingList;
+	
 	@Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,6 +37,8 @@ public class MiniProject extends Activity {
 //        
 //        db.insert("Varer", "id", cv);
         
+        currShoppingList = new ArrayList<Vare>();
+        
         //init actionbar
         ActionBar ab = getActionBar();
         ab.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
@@ -59,4 +63,14 @@ public class MiniProject extends Activity {
         getMenuInflater().inflate(R.menu.activity_mini_project, menu);
         return true;
     }
+
+    public ArrayList<Vare> getCurrentShoppingList() {
+    	return currShoppingList;
+    }
+    
+	public void onVareSelected(int position, Vare vare) {
+//		ShoppingListeFragment slf = (ShoppingListeFragment)getFragmentManager().findFragmentById(R.id.shoppingListe);
+//		slf.addVareToShoppingListe(vare);
+		currShoppingList.add(vare);
+	}
 }

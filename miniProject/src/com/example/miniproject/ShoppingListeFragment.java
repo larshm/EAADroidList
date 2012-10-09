@@ -21,13 +21,10 @@ public class ShoppingListeFragment extends ListFragment {
 	public void onActivityCreated(Bundle savedInstanceState) {
 		super.onActivityCreated(savedInstanceState);
 		
-		if(savedInstanceState != null)
-			if(savedInstanceState.containsKey("shoppinglist"))
-				currShoppinglistVarer = (ArrayList<Vare>)savedInstanceState.getSerializable("shoppinglist");
-			else
-				currShoppinglistVarer = new ArrayList<Vare>();
-		else
+		if(currShoppinglistVarer == null)
 			currShoppinglistVarer = new ArrayList<Vare>();
+		
+		Log.v("LARSLOL", currShoppinglistVarer.size()+"");
 	}
 	
 	@Override
@@ -39,7 +36,11 @@ public class ShoppingListeFragment extends ListFragment {
 	public void onStart() {
 		super.onStart();
 		
-		getListView().setAdapter(new ArrayAdapter<Vare>(getListView().getContext(), android.R.layout.simple_list_item_1, currShoppinglistVarer));
+		MiniProject mp = (MiniProject)getActivity();
+		
+		setListAdapter(new ArrayAdapter<Vare>(getListView().getContext(), android.R.layout.simple_list_item_1, mp.getCurrentShoppingList()));
+		
+		mp = null;
 	}
 	
 	@Override
@@ -55,16 +56,5 @@ public class ShoppingListeFragment extends ListFragment {
 			
 			
 		}
-	}
-	
-	@Override
-	public void onSaveInstanceState(Bundle outState) {
-		super.onSaveInstanceState(outState);
-		
-		outState.putSerializable("shoppinglist", currShoppinglistVarer);
-	}
-	
-	public void addVareToShoppingListe(Vare v) {
-		currShoppinglistVarer.add(v);
 	}
 }
