@@ -2,7 +2,8 @@ package com.example.miniproject;
 
 import java.util.ArrayList;
 
-import android.app.Activity;
+import android.app.*;
+import android.content.*;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -23,14 +24,24 @@ public class Service {
 					.getColumnIndex("volumeUnit"))];
 			varer.add(new Vare(navn, volume, pris, vu));
 		}
-
+		db.close();
 		return varer;
 	}
 
-	public static void storeData(Context context) {
+	public static void storeData(Context context, ArrayList<Vare> arr) {
 		DroidListDatabaseHelper dbh = new DroidListDatabaseHelper(context);
-		SQLiteDatabase dbDatabase = dbh.getWritableDatabase();
-		
-//ShoppingListeFragment slf = MiniProject
+		SQLiteDatabase db = dbh.getWritableDatabase();
+
+		for (Vare vare : arr) {
+			ContentValues cv = new ContentValues();
+			cv.put("navn", vare.getNavn());
+			cv.put("volume", vare.getVolume());
+			cv.put("pris", vare.getPris());
+			cv.put("volumeUnit", vare.getVolumeUnit().toString());
+
+			db.insert("Varer", "id", cv);
+
+		}
+		db.close();
 	}
 }
