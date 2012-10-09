@@ -28,6 +28,11 @@ public class Service {
 		return varer;
 	}
 
+	/**
+	 * 
+	 * @param context
+	 * @param arr
+	 */
 	public static void storeData(Context context, ArrayList<Vare> arr) {
 		DroidListDatabaseHelper dbh = new DroidListDatabaseHelper(context);
 		SQLiteDatabase db = dbh.getWritableDatabase();
@@ -39,7 +44,7 @@ public class Service {
 			cv.put("pris", vare.getPris());
 			cv.put("volumeUnit", vare.getVolumeUnit().toString());
 
-			db.insert("Varer", "id", cv);
+			db.insert("Varer", "id", cv);//Check hvad vi gør med id
 
 		}
 		db.close();
