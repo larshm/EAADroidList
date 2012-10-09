@@ -16,8 +16,9 @@ public final class R {
     }
     public static final class id {
         public static final int empty=0x7f070002;
-        public static final int menu_settings=0x7f070003;
+        public static final int menu_settings=0x7f070004;
         public static final int shoppingListe=0x7f070000;
+        public static final int sum_text=0x7f070003;
         public static final int vareListe=0x7f070001;
     }
     public static final class layout {
@@ -25,6 +26,7 @@ public final class R {
         public static final int empty=0x7f030001;
         public static final int fragment_test=0x7f030002;
         public static final int shoplist=0x7f030003;
+        public static final int shoppinglist_fragment=0x7f030004;
     }
     public static final class menu {
         public static final int activity_mini_project=0x7f060000;
